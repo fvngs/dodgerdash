@@ -1,0 +1,21 @@
+{
+    "screen_width": 800,
+    "screen_height": 600,
+    "colors": {
+        "white": [255, 255, 255],
+        "black": [0, 0, 0],
+        "red": [255, 0, 0]
+    },
+    "player": {
+        "width": 50,
+        "height": 60,
+        "speed": 7
+    },
+    "obstacle": {
+        "width": 50,
+        "height": 50,
+        "speed": 5,
+        "frequency": 25
+    },
+    "font_size": 35
+}
