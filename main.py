@@ -28,8 +28,11 @@ while running:
     if keys[pygame.K_RIGHT] and player.x < constants.SCREEN_WIDTH - player.width:
         player.move("right")
 
-    if random.randint(1, constants.OBSTACLE_FREQUENCY) == 1:
-        obstacles.append(Obstacle.create_random(constants.SCREEN_WIDTH, constants.OBSTACLE_WIDTH, constants.OBSTACLE_HEIGHT, constants.OBSTACLE_SPEED))
+    adjusted_frequency = max(1, constants.OBSTACLE_FREQUENCY - score // 100)
+    if random.randint(1, adjusted_frequency) == 1:
+        new_obstacle = Obstacle.create_random(constants.SCREEN_WIDTH, constants.OBSTACLE_WIDTH, constants.OBSTACLE_HEIGHT, constants.OBSTACLE_SPEED)
+        if not any(obstacle.intersects(new_obstacle) for obstacle in obstacles):
+            obstacles.append(new_obstacle)
 
     for obstacle in obstacles[:]:
         obstacle.move()

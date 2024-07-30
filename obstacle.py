@@ -28,3 +28,9 @@ class Obstacle:
                 self.y + self.height > player.y and
                 self.x < player.x + player.width and
                 self.x + self.width > player.x)
+
+    def intersects(self, other):
+        return not (self.x + self.width <= other.x or
+                    self.x >= other.x + other.width or
+                    self.y + self.height <= other.y or
+                    self.y >= other.y + other.height)
